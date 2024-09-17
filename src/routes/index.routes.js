@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const exhibitionRouter = require('./exhibition.routes.js')
+const exhibitionRouter = require('./department.routes.js')
 async function index (req, res){  
     res.send('index');
 }

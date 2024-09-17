@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
+    <title>Museo Metropolitano</title>
 </head>
 <body>
-    <h1>Users</h1>
-    <ul>
-        <% exhibitions.departments.forEach(exhibition => { %>
-            <li><%= exhibition.departmentId %> - <%= exhibition.displayName %></li>
-        <% }) %>
-    </ul>
+
+    <div>
+        <form>
+            <label for = "titulo">Titulo</label>
+            <input type = "text" name = "titulo"></input>
+
+            <label for = "departamento">Departamento</label>
+            <select name = "departamento">
+
+                <% departments.departments.forEach(department => { %>
+                    <option value= <%= department.departmentId %>> <%= department.displayName %></option>
+                <% }) %>
+
+            </select>
+
+            <label for = "ubicacion">Ubicacion</label>
+            <input type = "text" name = "ubicacion"></input>
+        </form>
+    </div>
+
 </body>
 </html>
