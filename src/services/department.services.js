@@ -4,8 +4,6 @@ async function getAllDepartments() {
     console.log("Start Department controlers");
     const response = await fetch(apiURL);
     const departments = await response.json();
-
-    console.log(departments);
     return departments;
   } catch (error) {
     console.error(error);

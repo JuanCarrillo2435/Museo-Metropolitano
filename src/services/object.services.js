@@ -5,9 +5,11 @@ async function getObjectById(objectId) {
     const response = await fetch(apiURL + objectId);
     const object = await response.json();
 
-    console.log("Object: " + object);
+    return object
   } catch (error) {
     console.error(error);
     throw new Error("Error fetching the object: " + error);
   }
 }
+
+module.exports= {getObjectById}
