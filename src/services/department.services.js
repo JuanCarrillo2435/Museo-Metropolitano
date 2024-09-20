@@ -1,7 +1,6 @@
 const apiURL = `https://collectionapi.metmuseum.org/public/collection/v1/departments`;
 async function getAllDepartments() {
   try {
-    console.log("Start Department controlers");
     const response = await fetch(apiURL);
     const departments = await response.json();
     return departments;

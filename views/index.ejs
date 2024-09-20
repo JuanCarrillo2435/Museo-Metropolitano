@@ -40,21 +40,15 @@
                             <strong>Imagen Principal:</strong> 
                             <img src="<%= object.primaryImage %>" alt="<%= object.title %>" style="max-width: 200px;"><br>
                         <% } else { %>
-                            <strong>Imagen Principal:</strong> No disponible<br>
+                            <strong>Imagen Principal:</strong> <img src="../public/img/NoDispo.jpg" alt="Imagen no Disponible" style="max-width: 200px;"> <br>
                         <% } %>
                         
                         <strong>Cultura:</strong> <%= object.culture ? object.culture : 'No disponible' %><br>
                         <strong>Dinastía:</strong> <%= object.dynasty ? object.dynasty : 'No disponible' %><br>
                         <strong>Fecha de la Obra:</strong> <%= object.objectDate ? object.objectDate : 'No disponible' %><br>
-                        
-                        <% if (object.additionalImages && object.additionalImages.length > 0) { %>
-                            <strong>Imágenes Adicionales:</strong>
-                            <ul>
-                                <% object.additionalImages.forEach(image => { %>
-                                    <li><img src="<%= image %>" alt="Imagen adicional" style="max-width: 100px;"></li>
-                                <% }) %>
-                            </ul>
-                        <% } %>
+                        <% if(object.additionalImages && object.additionalImages.length > 0){ %>
+                            <button href="" >Ver más</button>
+                        <%  } %>
                     </li>
                     <hr>
                 <% }) %>
@@ -64,6 +58,31 @@
         <% } %>
 
     </div>
+
+    <% if(results){ %>
+    <div class="pagination">
+    
+        <% if (currentPage > 0) { %>
+            <a href="<%= baseUrl %>&page=<%= currentPage - 1 %>">Anterior</a>
+        <% } %>
+      
+      <% for (let i = startPage; i <= endPage; i++) { %>
+        <a href="<%= baseUrl %>&page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+          <%= i %>
+        </a>
+      <% } %>
+      
+      <a href="<%= baseUrl %>&page=0" class="first-page">Primera</a>
+      <a href="<%= baseUrl %>&page=<%= totalPages - 1%>" class="last-page">Última</a>
+
+        
+        <% if (currentPage < (totalPages - 1)) { %>
+            <a href="<%= baseUrl %>&page=<%= currentPage + 1 %>">Siguiente</a>
+        <% } %>
+    </div>
+
+    <% } %>
+
 
 </body>
 </html>
