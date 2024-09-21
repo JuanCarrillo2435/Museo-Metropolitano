@@ -6,8 +6,6 @@ const {getPaginationRange} = require("../utils/paginationRange")
 const searchFilter = async (req, res) => {
     
     const baseUrl = req.url.replace(/(\&|\?)page=\d+/g, '').replace("/","/search")
-    console.log("🚀 ~ searchFilter ~ baseUrl:", baseUrl)
-    console.log("🚀 ~ searchFilter ~ req.url:", req.url)
   const { q, departmentId, geoLocation, page = 0 } = req.query;
 
   try {
@@ -28,7 +26,6 @@ const searchFilter = async (req, res) => {
       startPage,
       endPage
     });
-      console.log("🚀 ~ searchFilter ~ page:", page)
   } catch (error) {
     console.error("Error en la búsqueda:", error);
     res.status(500).json({ error: "Error al realizar la búsqueda." });

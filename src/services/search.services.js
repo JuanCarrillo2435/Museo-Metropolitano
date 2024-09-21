@@ -12,10 +12,6 @@ const searchExhibition = async (q, departmentId, geoLocation) => {
     if (geoLocation !== "") {
       url += `&geoLocation=${encodeURIComponent(geoLocation)}`;
     }
-    console.log("🚀 ~ searchExhibition ~ url:", url);
-
-    console.log("🚀 ~ searchExhibition ~ geoLocation:", geoLocation);
-    console.log("🚀 ~ searchExhibition ~ departmentId:", departmentId);
     const response = await fetch(url);
     const data = await response.json();
     return data;

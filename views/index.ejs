@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museo Metropolitano</title>
+    <link(rel="stylesheet", href="../public/styles/index.css")>
 </head>
 <body>
 
@@ -28,7 +29,13 @@
             <button type="submit">buscar</button>
         </form>
 
+        </div>
+
+        
         <h1>Resultados de Búsqueda</h1>
+
+        <div>
+
         <% if (results && results.length > 0) { %>
             <ul>
                 <% results.forEach(object => { %>
@@ -47,7 +54,7 @@
                         <strong>Dinastía:</strong> <%= object.dynasty ? object.dynasty : 'No disponible' %><br>
                         <strong>Fecha de la Obra:</strong> <%= object.objectDate ? object.objectDate : 'No disponible' %><br>
                         <% if(object.additionalImages && object.additionalImages.length > 0){ %>
-                            <button href="" >Ver más</button>
+                            <button><a href="./details.ejs">Ver más</a></button>
                         <%  } %>
                     </li>
                     <hr>
@@ -61,9 +68,11 @@
 
     <% if(results){ %>
     <div class="pagination">
+
+        <a href="<%= baseUrl %>&page=0" class="first-page"><<</a>
     
         <% if (currentPage > 0) { %>
-            <a href="<%= baseUrl %>&page=<%= currentPage - 1 %>">Anterior</a>
+            <a href="<%= baseUrl %>&page=<%= currentPage - 1 %>"><</a>
         <% } %>
       
       <% for (let i = startPage; i <= endPage; i++) { %>
@@ -71,14 +80,12 @@
           <%= i %>
         </a>
       <% } %>
-      
-      <a href="<%= baseUrl %>&page=0" class="first-page">Primera</a>
-      <a href="<%= baseUrl %>&page=<%= totalPages - 1%>" class="last-page">Última</a>
-
         
         <% if (currentPage < (totalPages - 1)) { %>
-            <a href="<%= baseUrl %>&page=<%= currentPage + 1 %>">Siguiente</a>
+            <a href="<%= baseUrl %>&page=<%= currentPage + 1 %>">></a>
         <% } %>
+
+        <a href="<%= baseUrl %>&page=<%= totalPages - 1%>" class="last-page">>></a>
     </div>
 
     <% } %>
