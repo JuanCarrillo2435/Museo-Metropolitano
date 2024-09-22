@@ -6,6 +6,21 @@
     <title>Details</title>
 </head>
 <body>
-    <p>hello</p>
+    <div>
+        <h1>Detalles de la Obra</h1>
+        <div>
+             
+            <% if (object.primaryImage && object.primaryImage.trim() !== '') { %>
+                <strong>Imagen Principal:</strong> 
+                <img src="<%= object.primaryImage %>" alt="<%= object.title %>" style="max-width: 200px;"><br>
+                <% } %>
+
+            <strong>Título:</strong> <%= object.title %><br>
+
+                <% object.additionalImages.forEach(image => { %>
+                    <img src="<%= image %>" alt="Imagen adicional" style="max-width: 200px">
+                    <% }) %>
+        </div>
+    </div>
 </body>
 </html>

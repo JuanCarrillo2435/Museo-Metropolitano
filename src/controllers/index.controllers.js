@@ -1,4 +1,5 @@
 const departmentService = require('../services/department.services')
+const exhibitionService = require('../services/exhibition.services')
 
 async function renderHomePage(req,res) {
     try {
@@ -10,6 +11,7 @@ async function renderHomePage(req,res) {
     }
 }
 
+
 module.exports={
-    renderHomePage
+    renderHomePage,
 }

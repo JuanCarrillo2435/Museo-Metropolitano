@@ -53,8 +53,8 @@
                         <strong>Cultura:</strong> <%= object.culture ? object.culture : 'No disponible' %><br>
                         <strong>Dinastía:</strong> <%= object.dynasty ? object.dynasty : 'No disponible' %><br>
                         <strong>Fecha de la Obra:</strong> <%= object.objectDate ? object.objectDate : 'No disponible' %><br>
-                        <% if(object.additionalImages && object.additionalImages.length > 0){ %>
-                            <button><a href="./details.ejs">Ver más</a></button>
+                        <% if(objects.additionalImages && object.additionalImages.length > 0){ %>
+                            <a href="/details?objectId=<%= object.objectID %>">Ver más</a>
                         <%  } %>
                     </li>
                     <hr>
