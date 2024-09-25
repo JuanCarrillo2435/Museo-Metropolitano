@@ -1,6 +1,7 @@
 const { translateText } = require("../utils/translator");
 const objectService = require("./object.services");
 const searchService = require("./search.services");
+const {translateObject} = require('../utils/translateObject')
 
 async function getExhibitions(q, departmentId, geoLocation, page) {
   const pageNumber = parseInt(page);
@@ -17,18 +18,9 @@ async function getExhibitions(q, departmentId, geoLocation, page) {
       for await (const objectId of results.objectIDs) {
         if (i >= 20 * pageNumber && i < 20 * (pageNumber + 1)) {
           const object = await objectService.getObjectById(objectId);
-          const translatedTitle = await translateText(object.title)
-          const translatedCulture = object.culture ? await translateText(object.culture) : 'No disponible'
-          const translatedDinasty = object.dynasty ? await translateText(object.dynasty) : 'No disponible';
-          objectsArray.push({
-            objectID: object.objectID,
-            title: translatedTitle,
-            primaryImage: object.primaryImage,
-            additionalImages: object.additionalImages,
-            culture: translatedCulture,
-            dynasty: translatedDinasty,
-            objectDate: object.objectDate,
-          });
+          objectsArray.push(
+            await translateObject(object)
+          );
         }
         i++;
       }

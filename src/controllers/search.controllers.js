@@ -27,8 +27,17 @@ const searchFilter = async (req, res) => {
       endPage
     });
   } catch (error) {
+    const departments = await departmentService.getAllDepartments();
     console.error("Error en la búsqueda:", error);
-    res.status(500).json({ error: "Error al realizar la búsqueda." });
+    res.render("index", {
+      departments : departments,
+      results : null ,
+      totalPages : null,
+      currentPage :  null,
+      baseUrl : null,
+      startPage : null,
+      endPage : null
+    });
   }
 };
 
