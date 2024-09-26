@@ -16,7 +16,6 @@ const searchExhibition = async (q, departmentId, geoLocation) => {
     if (geoLocation !== "") {
       url += `&geoLocation=${encodeURIComponent( await translateTextESEN(geoLocation))}`;
     }
-      console.log("🚀 ~ searchExhibition ~ url:", url)
     const response = await fetch(url);
     const data = await response.json();
     return data;
