@@ -1,9 +1,9 @@
 const {translateText} = require('./translator')
 
 async function translateObject(object) {
-    const translatedTitle = await translateText(object.title)
     const translatedCulture = object.culture ? await translateText(object.culture) : 'No disponible'
     const translatedDinasty = object.dynasty ? await translateText(object.dynasty) : 'No disponible';
+    const translatedTitle = object.title  ? await translateText(object.title) : 'Titulo No disponible';
 
     return {
             objectID: object.objectID,

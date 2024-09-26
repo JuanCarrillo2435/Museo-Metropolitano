@@ -7,14 +7,14 @@ const apiURL =
 const searchExhibition = async (q, departmentId, geoLocation) => {
   geoLocation = geoLocation.charAt(0).toUpperCase() + geoLocation.slice(1).toLowerCase();
   try {
-    let url = `${apiURL}?q=${encodeURIComponent(await translateTextESEN(q))}`;
+    let url = `${apiURL}?q=${q ? encodeURIComponent(await translateTextESEN(q)) : ''}`;
 
     if (departmentId !== "") {
       url += `&departmentId=${departmentId}`;
     }
 
     if (geoLocation !== "") {
-      url += `&geoLocation=${encodeURIComponent(geoLocation)}`;
+      url += `&geoLocation=${encodeURIComponent( await translateTextESEN(geoLocation))}`;
     }
       console.log("🚀 ~ searchExhibition ~ url:", url)
     const response = await fetch(url);
